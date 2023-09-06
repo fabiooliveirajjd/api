@@ -45,5 +45,4 @@ public class Usuario implements Serializable {
     public enum Role {
         ROLE_ADMIN, ROLE_CLIENTE
     }
-
 }
