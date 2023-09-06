@@ -17,4 +17,11 @@ public class UsuarioService {
     public Usuario salvar(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
+
+    @Transactional(readOnly = true)//INDICA PARA O SPRING QUE ESSE MÉTODO É EXCLUSIVO PARA UMA CONSULTA NO BANCO DE DADOS(AJUDA NA PERFORMACE)
+    public Usuario buscarPorId(Long id) {
+        return usuarioRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("usuário não encontrado.")
+        );
+    }
 }
