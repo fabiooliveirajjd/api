@@ -31,4 +31,8 @@ public class UsuarioService {
         usuario.setPassword(password);
         return usuario;
     }
+
+    public void deletar (Long id){
+        usuarioRepository.deleteById(id);
+    }
 }

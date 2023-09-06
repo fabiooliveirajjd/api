@@ -31,4 +31,5 @@ public class UsuarioController {
         Usuario user = usuarioService.editarSenha(id, usuario.getPassword());
         return ResponseEntity.ok(user);
     }
+
 }
