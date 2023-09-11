@@ -1,6 +1,9 @@
 package com.fabio.api.controller;
 
+import com.fabio.api.dto.UsuarioCreateDto;
+import com.fabio.api.dto.UsuarioResponseDto;
 import com.fabio.api.entity.Usuario;
+import com.fabio.api.mapper.UsuarioMapper;
 import com.fabio.api.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,9 +20,9 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
 
     @PostMapping
-    public ResponseEntity<Usuario> create(@RequestBody Usuario usuario) {
-        Usuario newUsuario = usuarioService.salvar(usuario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newUsuario);
+    public ResponseEntity<UsuarioResponseDto> create(@RequestBody UsuarioCreateDto createDto) {
+        Usuario newUsuario = usuarioService.salvar(UsuarioMapper.toUsuario(createDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(UsuarioMapper.toDto(newUsuario));
     }
 
     @GetMapping("/{id}")

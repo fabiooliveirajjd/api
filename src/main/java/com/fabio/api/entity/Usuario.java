@@ -29,7 +29,7 @@ public class Usuario implements Serializable {
 
     @Enumerated(EnumType.STRING)//TRANSFORMA O NOME DA CONSTANTE (0 ROLE_ADMIN E 1 ROLE_CLIENTE) EM UMA STRING PARA SALVAR NO BANCO DE DADOS
     @Column(name = "role", nullable = false, length = 25)
-    private Role role;
+    private Role role = Role.ROLE_CLIENTE;
 
     @Column(name = "data_criacao")
     private LocalDateTime dataCriacao;//auditoria
