@@ -1,10 +1,13 @@
-package com.fabio.api.mapper;
+package com.fabio.api.dto.mapper;
 
 import com.fabio.api.dto.UsuarioCreateDto;
 import com.fabio.api.dto.UsuarioResponseDto;
 import com.fabio.api.entity.Usuario;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class UsuarioMapper {
 
@@ -23,5 +26,10 @@ public class UsuarioMapper {
         ModelMapper mapper =  new ModelMapper();
         mapper.addMappings(props);
         return mapper.map(usuario, UsuarioResponseDto.class);
+    }
+
+    //TRABALHA COM A LISTA DE RETORNO GET ALL
+    public static List<UsuarioResponseDto> toListDto(List<Usuario> usuarios){
+        return usuarios.stream().map(user -> toDto(user)).collect(Collectors.toList()); //CADA USUARIO CONTIDO NA LISTA VAI SE TORNAR EM UM DTO
     }
 }
