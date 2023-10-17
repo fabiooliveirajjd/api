@@ -3,9 +3,10 @@ package com.fabio.api.controller;
 import com.fabio.api.dto.UsuarioCreateDto;
 import com.fabio.api.dto.UsuarioResponseDto;
 import com.fabio.api.dto.UsuarioSenhaDto;
-import com.fabio.api.entity.Usuario;
 import com.fabio.api.dto.mapper.UsuarioMapper;
+import com.fabio.api.entity.Usuario;
 import com.fabio.api.service.UsuarioService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
 
     @PostMapping
-    public ResponseEntity<UsuarioResponseDto> create(@RequestBody UsuarioCreateDto createDto) {
+    public ResponseEntity<UsuarioResponseDto> create(@Valid @RequestBody UsuarioCreateDto createDto) {
         Usuario newUsuario = usuarioService.salvar(UsuarioMapper.toUsuario(createDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(UsuarioMapper.toDto(newUsuario));
     }
@@ -33,7 +34,7 @@ public class UsuarioController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Void> updatePassword (@PathVariable Long id, @RequestBody UsuarioSenhaDto dto) {
+    public ResponseEntity<Void> updatePassword(@PathVariable Long id, @Valid @RequestBody UsuarioSenhaDto dto) {
         Usuario user = usuarioService.editarSenha(id, dto.getSenhaAtual(), dto.getNovaSenha(), dto.getConfirmaSenha());
         return ResponseEntity.noContent().build();
     }
@@ -43,6 +44,4 @@ public class UsuarioController {
         List<Usuario> users = usuarioService.buscarTodos();
         return ResponseEntity.ok(UsuarioMapper.toListDto(users));
     }
-
-
 }
