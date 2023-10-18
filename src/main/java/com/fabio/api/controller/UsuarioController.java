@@ -43,15 +43,13 @@ public class UsuarioController {
      */
     @Operation(summary = "Criar um novo usuário", description = "Recurso para adicionar novo usuário",
         responses = {
-            @ApiResponse(responseCode = "201", description = "Recurso criado com sucesso",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = UsuarioResponseDto.class))),
-                @ApiResponse(responseCode = "409", description = "Usuário e e-mail já cadastrado no sistema",
-                content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-                        @ApiResponse(responseCode = "422", description = "Recursos não processados por dados e entradas inválidos",
-                                content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))
-                )
-        }
-    )
+                @ApiResponse(responseCode = "201", description = "Recurso criado com sucesso",
+                        content = @Content(mediaType = "application/json", schema = @Schema(implementation = UsuarioResponseDto.class))),
+                @ApiResponse(responseCode = "409", description = "Usuário e-mail já cadastrado no sistema",
+                        content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+                @ApiResponse(responseCode = "422", description = "Recurso não processado por dados de entrada invalidos",
+                        content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
+        })
     @PostMapping
     public ResponseEntity<UsuarioResponseDto> create(@Valid @RequestBody UsuarioCreateDto createDto) {
         Usuario newUsuario = usuarioService.salvar(UsuarioMapper.toUsuario(createDto));
