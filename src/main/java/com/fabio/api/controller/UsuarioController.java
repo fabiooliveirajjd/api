@@ -71,7 +71,7 @@ public class UsuarioController {
                             content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
             })
     @GetMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')") // Apenas usuários com papel ADMIN podem acessar este recurso.
+    @PreAuthorize("hasRole('ADMIN') OR (hasRole('CLIENTE') AND #id == authentication.principal.id)") // Apenas usuários com papel ADMIN podem acessar este recurso.
     public ResponseEntity<UsuarioResponseDto> buscarPorId(@PathVariable Long id) {
         Usuario user = usuarioService.buscarPorId(id);
         return ResponseEntity.ok(UsuarioMapper.toDto(user));
