@@ -21,7 +21,7 @@ public class JwtUtils {
     public static final String SECRET_KEY = "0123456789-0123456789-0123456789";
     public static final long EXPIRE_DAYS = 0;
     public static final long EXPIRE_HOURS = 0;
-    public static final long EXPIRE_MINUTES = 2;
+    public static final long EXPIRE_MINUTES = 30;
 
     private JwtUtils(){
     }
@@ -69,14 +69,23 @@ public class JwtUtils {
 
     public static boolean isTokenValid(String token) {
         try {
-            Jwts.parserBuilder()
+            Claims claims = Jwts.parserBuilder()
                     .setSigningKey(generateKey()).build()
-                    .parseClaimsJws(refactorToken(token));
+                    .parseClaimsJws(refactorToken(token)).getBody();
+
+            Date expiration = claims.getExpiration();
+            Date now = new Date();
+
+            if (expiration != null && expiration.before(now)) {
+                log.error("Token expirou automaticamente");
+                return false;
+            }
+
             return true;
         } catch (JwtException ex) {
-            log.error(String.format("Token invalido %s", ex.getMessage()));
+            log.error(String.format("Token inválido %s", ex.getMessage()));
+            return false;
         }
-        return false;
     }
 
     private static String refactorToken(String token) {
