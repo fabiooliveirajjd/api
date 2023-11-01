@@ -112,6 +112,7 @@ public class UsuarioController {
                                     array = @ArraySchema(schema = @Schema(implementation = UsuarioResponseDto.class))))
             })
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')") // Apenas usuários com papel ADMIN podem acessar este recurso.
     public ResponseEntity<List<UsuarioResponseDto>> buscarTodos() {
         List<Usuario> users = usuarioService.buscarTodos();
         return ResponseEntity.ok(UsuarioMapper.toListDto(users));
