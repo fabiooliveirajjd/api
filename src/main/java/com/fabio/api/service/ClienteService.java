@@ -12,14 +12,16 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ClienteService {
 
-    private final ClienteRepository repository;
+    private final ClienteRepository clienteRepository;
 
     @Transactional
     public Cliente salvar(Cliente cliente) {
         try {
-            return repository.save(cliente);
-        } catch (DataIntegrityViolationException e) {
-            throw new CpfUniqueViolationException(String.format("CPF %s já cadastrado", cliente.getCpf()));
+            return clienteRepository.save(cliente);
+        } catch (DataIntegrityViolationException ex) { //verificar
+            throw new CpfUniqueViolationException(
+                    String.format("CPF '%s' não pode ser cadastrado, já existe no sistema", cliente.getCpf())
+            );
         }
     }
 }
