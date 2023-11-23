@@ -11,8 +11,8 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Sql(scripts = "/sql/usuarios/usuarios-insert.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@Sql(scripts = "/sql/usuarios/usuarios-delete.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+@Sql(scripts = "/sql/data/usuario/usuarios-insert.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = "/sql/data/usuario/usuarios-delete.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class AutenticacaoIT {
     @Autowired
     WebTestClient testClient;
@@ -23,7 +23,7 @@ public class AutenticacaoIT {
                 .post()
                 .uri("/api/v1/auth")
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(new UsuarioLoginDto("fabiooliveirajjd@gmail.com", "123456"))
+                .bodyValue(new UsuarioLoginDto("ana@email.com", "123456"))
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(JwtToken.class)
@@ -131,5 +131,4 @@ public class AutenticacaoIT {
         org.assertj.core.api.Assertions.assertThat(responseBody).isNotNull();
         org.assertj.core.api.Assertions.assertThat(responseBody.getStatus()).isEqualTo(422);
     }
-
 }
