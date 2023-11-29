@@ -30,7 +30,6 @@ public class VagaIT {
                 .expectHeader().exists(HttpHeaders.LOCATION);
     }
 
-
     @Test
     public void criarVaga_ComDadoInvalidos_RetornarErrorMessageComStatus422() {
         testClient
@@ -59,7 +58,6 @@ public class VagaIT {
                 .jsonPath("method").isEqualTo("POST")
                 .jsonPath("path").isEqualTo("/api/v1/vagas");
     }
-
 
     @Test
     public void buscarVaga_ComCodigoExistente_RetornarVagaComStatus200() {
