@@ -5,14 +5,14 @@
  * na API. Ele lida com a criação de usuários, recuperação de informações de usuários por ID, atualização de senhas de usuários
  * e busca de todos os usuários.
  */
-package com.fabio.api.controller;
+package com.fabio.api.web.controller;
 
-import com.fabio.api.dto.UsuarioCreateDto;
-import com.fabio.api.dto.UsuarioResponseDto;
-import com.fabio.api.dto.UsuarioSenhaDto;
-import com.fabio.api.dto.mapper.UsuarioMapper;
+import com.fabio.api.web.dto.UsuarioCreateDto;
+import com.fabio.api.web.dto.UsuarioResponseDto;
+import com.fabio.api.web.dto.UsuarioSenhaDto;
+import com.fabio.api.web.dto.mapper.UsuarioMapper;
 import com.fabio.api.entity.Usuario;
-import com.fabio.api.exception.ErrorMessage;
+import com.fabio.api.web.exception.ErrorMessage;
 import com.fabio.api.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;

@@ -1,10 +1,7 @@
 package com.fabio.api.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -15,26 +12,21 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "clientes")
+@Table(name = "vagas")
 @EntityListeners(AuditingEntityListener.class)
-public class Cliente implements Serializable {
-
+public class Vaga implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "nome", nullable = false, length = 100)
-    private String nome;
-    @Column(name = "cpf", nullable = false, unique = true, length = 11)
-    private String cpf;
-    @OneToOne
-    @JoinColumn(name = "id_usuario", nullable = false)
-    private Usuario usuario;
-
+    @Column(name = "codigo", nullable = false, unique = true, length = 4)
+    private String codigo;
+    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private StatusVaga status;
     @CreatedDate
     @Column(name = "data_criacao")
     private LocalDateTime dataCriacao;
@@ -48,12 +40,16 @@ public class Cliente implements Serializable {
     @Column(name = "modificado_por")
     private String modificadoPor;
 
+    public enum StatusVaga {
+        LIVRE, OCUPADA
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Cliente cliente = (Cliente) o;
-        return Objects.equals(id, cliente.id);
+        Vaga vaga = (Vaga) o;
+        return Objects.equals(id, vaga.id);
     }
 
     @Override

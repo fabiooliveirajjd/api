@@ -5,7 +5,7 @@
  * Ela contém informações sobre o caminho da solicitação, o método HTTP, o status HTTP, uma mensagem de erro
  * e, opcionalmente, um mapa de erros detalhados relacionados a campos inválidos.
  */
-package com.fabio.api.exception;
+package com.fabio.api.web.exception;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.servlet.http.HttpServletRequest;

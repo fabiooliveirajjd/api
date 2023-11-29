@@ -1,11 +1,9 @@
-package com.fabio.api.controller;
-
-
-import com.fabio.api.dto.UsuarioLoginDto;
-import com.fabio.api.dto.UsuarioResponseDto;
-import com.fabio.api.exception.ErrorMessage;
+package com.fabio.api.web.controller;
 import com.fabio.api.jwt.JwtToken;
 import com.fabio.api.jwt.JwtUserDetailsService;
+import com.fabio.api.web.dto.UsuarioLoginDto;
+import com.fabio.api.web.dto.UsuarioResponseDto;
+import com.fabio.api.web.exception.ErrorMessage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -25,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name = "Autenticação", description = "Recurso para lidar com a autenticação na api.")
+@Tag(name = "Autenticação", description = "Recurso para proceder com a autenticação na API")
 @Slf4j
 @RequiredArgsConstructor
 @RestController
@@ -35,13 +33,13 @@ public class AutenticacaoController {
     private final JwtUserDetailsService detailsService;
     private final AuthenticationManager authenticationManager;
 
-    @Operation(summary = "Autenticar na api", description = "Recurso de autenticação na api",
+    @Operation(summary = "Autenticar na API", description = "Recurso de autenticação na API",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Autenticação realizada com sucesso de um Bearer Token",
+                    @ApiResponse(responseCode = "200", description = "Autenticação realizada com sucesso e retorno de um bearer token",
                             content = @Content(mediaType = "application/json", schema = @Schema(implementation = UsuarioResponseDto.class))),
                     @ApiResponse(responseCode = "400", description = "Credenciais inválidas",
                             content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
-                    @ApiResponse(responseCode = "422", description = "Campo(s) inválido(s)",
+                    @ApiResponse(responseCode = "422", description = "Campo(s) Inválido(s)",
                             content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
             })
     @PostMapping("/auth")

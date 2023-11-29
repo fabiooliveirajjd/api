@@ -4,10 +4,10 @@
  * Esta classe fornece métodos para mapear dados entre objetos DTO (Data Transfer Objects) e a entidade de usuário.
  * Ela utiliza a biblioteca ModelMapper para realizar o mapeamento de dados de forma eficiente.
  */
-package com.fabio.api.dto.mapper;
+package com.fabio.api.web.dto.mapper;
 
-import com.fabio.api.dto.UsuarioCreateDto;
-import com.fabio.api.dto.UsuarioResponseDto;
+import com.fabio.api.web.dto.UsuarioCreateDto;
+import com.fabio.api.web.dto.UsuarioResponseDto;
 import com.fabio.api.entity.Usuario;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;

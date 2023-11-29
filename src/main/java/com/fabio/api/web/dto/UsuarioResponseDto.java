@@ -4,7 +4,7 @@
  * Esta classe é usada para transferir informações de resposta relacionadas a um usuário da aplicação. Ela contém campos
  * para o ID do usuário, nome de usuário (email) e papel (role) do usuário na aplicação.
  */
-package com.fabio.api.dto;
+package com.fabio.api.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

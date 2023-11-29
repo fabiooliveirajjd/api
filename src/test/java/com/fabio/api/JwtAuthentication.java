@@ -1,6 +1,6 @@
 package com.fabio.api;
 
-import com.fabio.api.dto.UsuarioLoginDto;
+import com.fabio.api.web.dto.UsuarioLoginDto;
 import com.fabio.api.jwt.JwtToken;
 import org.springframework.http.HttpHeaders;
 import org.springframework.test.web.reactive.server.WebTestClient;

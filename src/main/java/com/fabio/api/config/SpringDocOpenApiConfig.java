@@ -15,23 +15,24 @@ public class SpringDocOpenApiConfig {
     @Bean
     public OpenAPI openAPI() {
         return new OpenAPI()
-                .components(new Components().addSecuritySchemes("bearer-jwt", securityScheme()))
+                .components(new Components().addSecuritySchemes("security", securityScheme()))
                 .info(
                         new Info()
-                                .title("REST API - Minha Api")
+                                .title("REST API - Spring Park")
                                 .description("API para gestão de estacionamento de veículos")
                                 .version("v1")
                                 .license(new License().name("Apache 2.0").url("https://www.apache.org/licenses/LICENSE-2.0"))
-                                .contact(new Contact().name("Fábio Santos Oliveira").email("fabiooliveirajjd@gmail.com"))
+                                .contact(new Contact().name("Marcio Ballem").email("marcio@spring-park.com"))
                 );
     }
-    private SecurityScheme securityScheme(){
+
+    private SecurityScheme securityScheme() {
         return new SecurityScheme()
-                .description("Insira um bearer token válido para autenticar")
+                .description("Insira um bearer token valido para prosseguir")
                 .type(SecurityScheme.Type.HTTP)
                 .in(SecurityScheme.In.HEADER)
                 .scheme("bearer")
                 .bearerFormat("JWT")
-                .name("Authorization");
+                .name("security");
     }
 }

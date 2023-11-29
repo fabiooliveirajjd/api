@@ -69,23 +69,14 @@ public class JwtUtils {
 
     public static boolean isTokenValid(String token) {
         try {
-            Claims claims = Jwts.parserBuilder()
+            Jwts.parserBuilder()
                     .setSigningKey(generateKey()).build()
-                    .parseClaimsJws(refactorToken(token)).getBody();
-
-            Date expiration = claims.getExpiration();
-            Date now = new Date();
-
-            if (expiration != null && expiration.before(now)) {
-                log.error("Token expirou automaticamente");
-                return false;
-            }
-
+                    .parseClaimsJws(refactorToken(token));
             return true;
         } catch (JwtException ex) {
-            log.error(String.format("Token inválido %s", ex.getMessage()));
-            return false;
+            log.error(String.format("Token invalido %s", ex.getMessage()));
         }
+        return false;
     }
 
     private static String refactorToken(String token) {

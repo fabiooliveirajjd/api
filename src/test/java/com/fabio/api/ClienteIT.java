@@ -1,9 +1,9 @@
 package com.fabio.api;
 
-import com.fabio.api.dto.ClienteCreateDto;
-import com.fabio.api.dto.ClienteResponseDto;
-import com.fabio.api.dto.PageableDto;
-import com.fabio.api.exception.ErrorMessage;
+import com.fabio.api.web.dto.ClienteCreateDto;
+import com.fabio.api.web.dto.ClienteResponseDto;
+import com.fabio.api.web.dto.PageableDto;
+import com.fabio.api.web.exception.ErrorMessage;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

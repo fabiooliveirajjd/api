@@ -2,8 +2,8 @@ package com.fabio.api.service;
 
 import com.fabio.api.entity.Cliente;
 import com.fabio.api.exception.CpfUniqueViolationException;
-import com.fabio.api.exception.EntityNotFoundExeption;
-import com.fabio.api.repository.ClienteProjection;
+import com.fabio.api.exception.EntityNotFoundException;
+import com.fabio.api.repository.projection.ClienteProjection;
 import com.fabio.api.repository.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -32,7 +32,7 @@ public class ClienteService {
     @Transactional(readOnly = true)
     public Cliente buscarPorId(Long id) {
         return clienteRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundExeption(String.format("Cliente id=%s não encontrado no sistema", id))
+                () -> new EntityNotFoundException(String.format("Cliente id=%s não encontrado no sistema", id))
         );
     }
 
@@ -46,4 +46,5 @@ public class ClienteService {
         return clienteRepository.findByUsuarioId(id);
     }
 }
+
 

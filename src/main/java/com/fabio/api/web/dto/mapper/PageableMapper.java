@@ -1,6 +1,6 @@
-package com.fabio.api.dto.mapper;
+package com.fabio.api.web.dto.mapper;
 
-import com.fabio.api.dto.PageableDto;
+import com.fabio.api.web.dto.PageableDto;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;

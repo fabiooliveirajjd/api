@@ -5,7 +5,7 @@
  * para o nome de usuário (email) e senha, e possui anotações de validação para garantir que os dados inseridos
  * atendam aos requisitos específicos.
  */
-package com.fabio.api.dto;
+package com.fabio.api.web.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

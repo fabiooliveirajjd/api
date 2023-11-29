@@ -2,6 +2,7 @@ package com.fabio.api.repository;
 
 
 import com.fabio.api.entity.Cliente;
+import com.fabio.api.repository.projection.ClienteProjection;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,4 +15,5 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
     Cliente findByUsuarioId(Long id);
 }
+
 

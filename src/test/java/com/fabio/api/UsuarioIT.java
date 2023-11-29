@@ -6,10 +6,10 @@
  */
 package com.fabio.api;
 
-import com.fabio.api.dto.UsuarioCreateDto;
-import com.fabio.api.dto.UsuarioResponseDto;
-import com.fabio.api.dto.UsuarioSenhaDto;
-import com.fabio.api.exception.ErrorMessage;
+import com.fabio.api.web.dto.UsuarioCreateDto;
+import com.fabio.api.web.dto.UsuarioResponseDto;
+import com.fabio.api.web.dto.UsuarioSenhaDto;
+import com.fabio.api.web.exception.ErrorMessage;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

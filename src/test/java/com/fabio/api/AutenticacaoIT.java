@@ -1,7 +1,7 @@
 package com.fabio.api;
 
-import com.fabio.api.dto.UsuarioLoginDto;
-import com.fabio.api.exception.ErrorMessage;
+import com.fabio.api.web.dto.UsuarioLoginDto;
+import com.fabio.api.web.exception.ErrorMessage;
 import com.fabio.api.jwt.JwtToken;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

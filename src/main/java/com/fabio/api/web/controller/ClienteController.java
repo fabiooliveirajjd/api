@@ -1,15 +1,14 @@
-package com.fabio.api.controller;
+package com.fabio.api.web.controller;
 
-import com.fabio.api.dto.ClienteCreateDto;
-import com.fabio.api.dto.ClienteResponseDto;
-import com.fabio.api.dto.PageableDto;
-import com.fabio.api.dto.UsuarioResponseDto;
-import com.fabio.api.dto.mapper.ClienteMapper;
-import com.fabio.api.dto.mapper.PageableMapper;
+import com.fabio.api.web.dto.ClienteCreateDto;
+import com.fabio.api.web.dto.ClienteResponseDto;
+import com.fabio.api.web.dto.PageableDto;
+import com.fabio.api.web.dto.mapper.ClienteMapper;
+import com.fabio.api.web.dto.mapper.PageableMapper;
 import com.fabio.api.entity.Cliente;
-import com.fabio.api.exception.ErrorMessage;
+import com.fabio.api.web.exception.ErrorMessage;
 import com.fabio.api.jwt.JwtUserDetails;
-import com.fabio.api.repository.ClienteProjection;
+import com.fabio.api.repository.projection.ClienteProjection;
 import com.fabio.api.service.ClienteService;
 import com.fabio.api.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;

@@ -1,4 +1,4 @@
-package com.fabio.api.dto;
+package com.fabio.api.web.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
