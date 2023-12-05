@@ -1,4 +1,4 @@
-package com.fabio.api;
+package com.fabio.api.repository;
 
 import com.fabio.api.entity.Vaga;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,6 +1,6 @@
 package com.fabio.api.service;
 
-import com.fabio.api.VagaRepository;
+import com.fabio.api.repository.VagaRepository;
 import com.fabio.api.entity.Vaga;
 import com.fabio.api.exception.CodigoUniqueViolationException;
 import com.fabio.api.exception.EntityNotFoundException;

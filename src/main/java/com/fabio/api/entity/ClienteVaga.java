@@ -44,6 +44,7 @@ public class ClienteVaga {
     @ManyToOne
     @JoinColumn(name = "id_cliente", nullable = false)
     private Cliente cliente;
+
     @ManyToOne
     @JoinColumn(name = "id_vaga", nullable = false)
     private Vaga vaga;

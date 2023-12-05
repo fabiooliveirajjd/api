@@ -55,7 +55,7 @@ public class SpringSecurityConfig {
         return new JwtAuthorizationFilter();
     }
 
-
+    
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
